@@ -15,14 +15,14 @@ def ddns(name = ""):
     formatted_now = now.strftime("%A, %d %B, %Y at %X")
     match_object = re.match("[a-zA-Z]+", name)
     host=request.args.get('host')
-    ip=host=request.args.get('ip')
+    ip=request.args.get('ip')
     if match_object:
         clean_name = match_object.group(0)
     else:
         clean_name = "Friend"
 
     s="ddns"
-    if (host): s=s+",host:" + host
+    if (host): s=s+",dns host is :" + host
     if (ip): s=s+",ip:" + ip
     s = s+ formatted_now + " " + clean_name
     return s
